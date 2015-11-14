@@ -11,8 +11,16 @@
     <script src="node_modules/angular-aria/angular-aria.min.js"></script>
     <script src="node_modules/angular-material/angular-material.min.js"></script>
 
+    <!-- @if NODE_ENV='development' -->
     <script src="scripts/app.js"></script>
     <script src="scripts/menu/menu.js"></script>
+
+    <!--suppress HtmlUnknownTarget: Composite only exists on Production BUILD -->
+    <!-- @endif -->
+    <!-- @if NODE_ENV='production' -->
+    <script src="scripts/app.angular.min.js"></script>
+    <!-- @endif -->
+
 </head>
 <body>
 <div class="page-container">

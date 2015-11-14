@@ -2,6 +2,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-search');
+    grunt.loadNpmTasks('grunt-preprocess');
 
     var packager = require('electron-packager');
 
@@ -21,10 +22,8 @@ module.exports = function (grunt) {
                 production: {
                     files: [
                         {
-                            expand: true,
-                            cwd: BUILD_DIR + 'scripts/',
-                            src: '**/*.js',
-                            dest: BUILD_DIR + 'scripts/'
+                            src : 'scripts/**/*.js',
+                            dest : BUILD_DIR + '/scripts/app.angular.min.js'
                         },
                         {
                             expand: true,
@@ -43,9 +42,13 @@ module.exports = function (grunt) {
                         }
                     ]
                 },
-                angular_app: {
+                angular_app_html: {
                     files: [
-                        {expand: true, src: ['scripts/**'], dest: BUILD_DIR}
+                        {
+                            expand: true,
+                            src: ['scripts/**/*.html'],
+                            dest: BUILD_DIR
+                        }
                     ]
                 }
             },
@@ -69,6 +72,17 @@ module.exports = function (grunt) {
                         }
                     }
                 }
+            },
+            preprocess: {
+                production: {
+                    options: {
+                        context: {
+                            NODE_ENV: 'production'
+                        }
+                    },
+                    src : BUILD_DIR + 'index.html',
+                    dest : BUILD_DIR + 'index.html'
+                }
             }
         }
     );
@@ -78,7 +92,8 @@ module.exports = function (grunt) {
         [
             'clean',
             'copy:electron_app',
-            'copy:angular_app',
+            'copy:angular_app_html',
+            'preprocess:production',
             'search:node_modules_dependencies',
             'uglify:production',
             'package',
