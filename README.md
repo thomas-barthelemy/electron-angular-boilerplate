@@ -1,5 +1,7 @@
 # Electron + AngularJS + Angular Material
 
+_For a TypeScript Version of the Boilerplate see the `typescript` branch_
+
 **Clone and run for a quick way to get started with Electron + AngularJS + AngularMaterial.**
 
 A basic Electron application needs just these files:
