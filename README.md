@@ -19,6 +19,13 @@ This boilerplate includes:
 
 You can learn more about AngularJS on the [AngularJS Website](https://angularjs.org/).
 
+## Requirements
+
+Electron is no longer a dev dependency and is expected to be installed globally:
+
+```bash
+npm install -g electron
+```
 
 ## To Use
 
