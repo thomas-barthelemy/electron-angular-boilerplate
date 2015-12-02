@@ -1,6 +1,6 @@
-# Electron + AngularJS + Angular Material
+# Electron + AngularJS + Angular Material + TypeScript
 
-**Clone and run for a quick way to get started with Electron + AngularJS + AngularMaterial.**
+**Clone and run for a quick way to get started with Electron + AngularJS + AngularMaterial + TypeScript.**
 
 A basic Electron application needs just these files:
 
@@ -21,10 +21,11 @@ You can learn more about AngularJS on the [AngularJS Website](https://angularjs.
 
 ## Requirements
 
-Electron is no longer a dev dependency and is expected to be installed globally:
+Electron and TypeScript are expected to be installed globally:
 
 ```bash
 npm install -g electron
+npm install -g typescript
 ```
 
 ## To Use

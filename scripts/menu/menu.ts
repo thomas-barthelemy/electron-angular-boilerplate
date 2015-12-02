@@ -1,3 +1,4 @@
+/// <reference path='../_app.ts' />
 (function () {
     'use strict';
 
