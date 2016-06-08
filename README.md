@@ -24,7 +24,7 @@ You can learn more about AngularJS on the [AngularJS Website](https://angularjs.
 Electron and TypeScript are expected to be installed globally:
 
 ```bash
-npm install -g electron
+npm install -g electron-prebuilt
 npm install -g typescript
 ```
 

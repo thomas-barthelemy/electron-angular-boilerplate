@@ -1,10 +1,8 @@
 /// <reference path='typings/github-electron/github-electron.d.ts' />
 
-var app = require('app');  // Module to control application life.
-var BrowserWindow = require('browser-window');  // Module to create native browser window.
-
-// Report crashes to our server.
-require('crash-reporter').start();
+var electron = require('electron');
+var app = electron.app;  // Module to control application life.
+var BrowserWindow = electron.BrowserWindow  // Module to create native browser window.
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -28,7 +26,7 @@ app.on('ready', function () {
     mainWindow = new BrowserWindow({width: 800, height: 600});
 
     // and load the index.html of the app.
-    mainWindow.loadUrl('file://' + __dirname + '/index.html');
+    mainWindow.loadURL('file://' + __dirname + '/index.html');
 
     // Open the DevTools.
     mainWindow.openDevTools();
