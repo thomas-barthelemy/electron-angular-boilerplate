@@ -11,7 +11,7 @@ module.exports = function (grunt) {
     const APP_NAME = 'APP Name';
     const PLATFORM = 'all';
     const ARCH = 'all';
-    const ELECTRON_VERSION = '0.34.0';
+    const ELECTRON_VERSION = '1.2.3';
     const USE_ASAR = true;
 
     // Project configuration.
