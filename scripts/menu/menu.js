@@ -3,8 +3,8 @@
 
     // Module automatically included (only) in the Renderer process (Electron)
     //noinspection NodeRequireContents
-    var remote = require('remote');
-    var Menu = remote.require('menu');
+    var remote = require('electron').remote;
+    var Menu = remote.Menu;
 
     var template = [
         {
