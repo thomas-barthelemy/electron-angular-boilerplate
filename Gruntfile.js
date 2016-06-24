@@ -2,7 +2,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-search');
-    grunt.loadNpmTasks('grunt-preprocess');
+    grunt.loadNpmTasks('grunt-comment-toggler');
 
     var packager = require('electron-packager');
 
@@ -13,6 +13,9 @@ module.exports = function (grunt) {
     const ARCH = 'all';
     const ELECTRON_VERSION = '1.2.3';
     const USE_ASAR = true;
+
+    var toggleCommentsFiles = {files:{}};
+    toggleCommentsFiles.files[BUILD_DIR + 'index.html'] = 'index.html';
 
     // Project configuration.
     grunt.initConfig(
@@ -73,16 +76,12 @@ module.exports = function (grunt) {
                     }
                 }
             },
-            preprocess: {
-                production: {
-                    options: {
-                        context: {
-                            NODE_ENV: 'production'
-                        }
-                    },
-                    src : BUILD_DIR + 'index.html',
-                    dest : BUILD_DIR + 'index.html'
-                }
+            toggleComments: {
+                customOptions: {
+                    padding: 1,
+                    removeCommands: false
+                },
+                files: toggleCommentsFiles
             }
         }
     );
@@ -93,7 +92,7 @@ module.exports = function (grunt) {
             'clean',
             'copy:electron_app',
             'copy:angular_app_html',
-            'preprocess:production',
+            'toggleComments',
             'search:node_modules_dependencies',
             'uglify:production',
             'package',
@@ -107,9 +106,6 @@ module.exports = function (grunt) {
         function () {
             if (grunt.file.isDir(BUILD_DIR)) {
                 grunt.file.delete(BUILD_DIR, {force: true});
-            }
-            if (grunt.file.isDir(DIST_DIR)) {
-                grunt.file.delete(DIST_DIR, {force: true});
             }
         }
     );
